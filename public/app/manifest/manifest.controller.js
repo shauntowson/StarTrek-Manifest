@@ -5,16 +5,14 @@
 		.module('app')
 		.controller('ManifestCtrl', ManifestCtrl);
 
-		ManifestCtrl.$inject = ['stationCrewPrepFactory', 'shipCrewFactory'];
+		ManifestCtrl.$inject = ['stationCrewPrepFactory', 'shipCrewFactory', '$scope'];
 
-		function ManifestCtrl(stationCrewPrepFactory, shipCrewFactory) {
+		function ManifestCtrl(stationCrewPrepFactory, shipCrewFactory, $scope) {
 			var vm = this;
-			vm.stationCrew = stationCrewPrepFactory.RelatedTopics;
+			vm.stationCrew = stationCrewPrepFactory;
 			vm.shipCrew = shipCrewFactory;
 
-
 			vm.addCrew = function(){
-
 				for (var i = vm.stationCrew.length - 1; i >= 0; i--) {
 					if (vm.stationCrew[i].selected === true) {
 						vm.stationCrew[i].selected = false;
@@ -22,12 +20,10 @@
   						vm.stationCrew.splice(i, 1);
 					}
 				}
-
+			
 			};
 
-
 			vm.removeCrew = function(){
-
 				for (var i = vm.shipCrew.length - 1; i >= 0; i--) {
 					if (vm.shipCrew[i].selected === true) {
 						vm.shipCrew[i].selected = false;
@@ -36,7 +32,5 @@
 					}
 				}
 			};
-
 		}
-		
 })();

@@ -20,7 +20,10 @@
 					.catch(getCrewFailed);
 
 				function getCrewComplete(response) {
-					return response.data;
+					return response.data.RelatedTopics.map(function(val, index){
+						val.id = index;
+						return val;
+					});
 				}
 
 				function getCrewFailed(error) {

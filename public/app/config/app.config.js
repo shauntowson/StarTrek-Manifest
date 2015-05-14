@@ -16,7 +16,7 @@
 					}
 				})
 				.state('crewmember', {
-					url: '/crewmember/{id}',
+					url: '/crewmember/:id',
 					templateUrl: 'public/app/crewmember/crewmember.html',
 					controller: 'CrewMemberCtrl',
 					controllerAs: 'vm',

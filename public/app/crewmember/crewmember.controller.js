@@ -9,7 +9,7 @@
 
 		function CrewMemberCtrl($stateParams, stationCrewPrepFactory) {
 			var vm = this;
-			vm.crewMember = stationCrewPrepFactory.RelatedTopics[$stateParams.id];
+			vm.crewMember = stationCrewPrepFactory[$stateParams.id];
 
 		}
 		

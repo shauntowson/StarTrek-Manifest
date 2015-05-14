@@ -23,7 +23,7 @@
 					}
 				})
 				.state('crewmember', {
-					url: '/crewmember/{id}',
+					url: '/crewmember/:id',
 					templateUrl: 'public/app/crewmember/crewmember.html',
 					controller: 'CrewMemberCtrl',
 					controllerAs: 'vm',
@@ -57,7 +57,7 @@
 
 		function CrewMemberCtrl($stateParams, stationCrewPrepFactory) {
 			var vm = this;
-			vm.crewMember = stationCrewPrepFactory.RelatedTopics[$stateParams.id];
+			vm.crewMember = stationCrewPrepFactory[$stateParams.id];
 
 		}
 		
@@ -72,68 +72,6 @@
 
 		function EngineeringCtrl() {
 
-
-		}
-		
-})();
-(function(){
-	'use strict';
-
-	angular
-		.module('app')
-		.controller('ManifestCtrl', ManifestCtrl);
-
-		ManifestCtrl.$inject = ['stationCrewPrepFactory', 'shipCrewFactory'];
-
-		function ManifestCtrl(stationCrewPrepFactory, shipCrewFactory) {
-			var vm = this;
-			vm.stationCrew = stationCrewPrepFactory.RelatedTopics;
-			vm.shipCrew = shipCrewFactory;
-
-
-			vm.addCrew = function(){
-
-				for (var i = vm.stationCrew.length - 1; i >= 0; i--) {
-					if (vm.stationCrew[i].selected === true) {
-						vm.stationCrew[i].selected = false;
-						vm.shipCrew.push(vm.stationCrew[i]);
-  						vm.stationCrew.splice(i, 1);
-					}
-				}
-
-			};
-
-
-			vm.removeCrew = function(){
-
-				for (var i = vm.shipCrew.length - 1; i >= 0; i--) {
-					if (vm.shipCrew[i].selected === true) {
-						vm.shipCrew[i].selected = false;
-						vm.stationCrew.push(vm.shipCrew[i]);
-  						vm.shipCrew.splice(i, 1);
-					}
-				}
-			};
-
-		}
-		
-})();
-(function(){
-	'use strict';
-
-	angular
-		.module('app')
-		.directive('toggleSelected', toggleSelected);
-
-		function toggleSelected() {
-			return {
-				restrict: 'A',
-				link: function(scope, element, attrs) {
-					element.bind('click', function() {
-						element.toggleClass("selected");
-					});
-				}
-			};
 
 		}
 		
@@ -170,6 +108,42 @@
 
 	angular
 		.module('app')
+		.controller('ManifestCtrl', ManifestCtrl);
+
+		ManifestCtrl.$inject = ['stationCrewPrepFactory', 'shipCrewFactory', '$scope'];
+
+		function ManifestCtrl(stationCrewPrepFactory, shipCrewFactory, $scope) {
+			var vm = this;
+			vm.stationCrew = stationCrewPrepFactory;
+			vm.shipCrew = shipCrewFactory;
+
+			vm.addCrew = function(){
+				for (var i = vm.stationCrew.length - 1; i >= 0; i--) {
+					if (vm.stationCrew[i].selected === true) {
+						vm.stationCrew[i].selected = false;
+						vm.shipCrew.push(vm.stationCrew[i]);
+  						vm.stationCrew.splice(i, 1);
+					}
+				}
+			
+			};
+
+			vm.removeCrew = function(){
+				for (var i = vm.shipCrew.length - 1; i >= 0; i--) {
+					if (vm.shipCrew[i].selected === true) {
+						vm.shipCrew[i].selected = false;
+						vm.stationCrew.push(vm.shipCrew[i]);
+  						vm.shipCrew.splice(i, 1);
+					}
+				}
+			};
+		}
+})();
+(function(){
+	'use strict';
+
+	angular
+		.module('app')
 		.factory('stationCrewFactory', stationCrewFactory);
 
 		stationCrewFactory.$inject = ['$http'];
@@ -187,7 +161,10 @@
 					.catch(getCrewFailed);
 
 				function getCrewComplete(response) {
-					return response.data;
+					return response.data.RelatedTopics.map(function(val, index){
+						val.id = index;
+						return val;
+					});
 				}
 
 				function getCrewFailed(error) {
