@@ -1,0 +1,20 @@
+
+<div class="crew-member-page">
+
+	<a class="go-back-button" ui-sref="manifest"><<< GO BACK</a>
+
+	<div>
+		<img class="crew-image" src="{{vm.crewMember.Icon.URL}}">
+		
+		<div class="name-group">
+			<span class="name-label">NAME:</span>
+			<span class="crew-name">{{vm.crewMember.Text | customFilter}}</span>
+		</div>
+
+		<div class="detail-group">
+			<span class="detail-label">DETAILS:</span>
+			<span class="crew-details">{{vm.crewMember.Text}}</span>
+		</div>
+	</div>
+
+</div>

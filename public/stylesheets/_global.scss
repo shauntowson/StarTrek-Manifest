@@ -1,0 +1,308 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+@include scrollbars(.5em, $colour1);
+
+body {
+	background-color: $backgroundColour;
+	color: $colour1;
+	font-family: $primaryFont;
+}
+
+.wrapper {
+
+}
+
+.top-bar {
+	z-index: 0;
+	background-color: $colour5;
+	text-align: right;
+	border-top-right-radius: 35px;
+	border-bottom-right-radius: 35px;
+	position: fixed;
+	top: 10px;
+	right: 10px;
+
+	height: 50px;
+	width: 90%;
+
+	.title {
+		padding: 0 6px 0 6px;
+		font-size: 2.1em;
+		position: relative;
+		right: 50px;
+		background-color: $backgroundColour;
+
+	}
+}
+
+.side-bar {
+	z-index: 1;
+	background-color: $secondaryColour;
+	border-right: 5px solid black;
+	border-bottom-left-radius: 35px;
+	border-top-left-radius: 35px;
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	
+	height: calc(100% - 20px);
+	width: 25%;
+	.side-options {
+		margin-top: 80px;
+		list-style-type: none;
+		li:first-child {
+			border-top: 5px solid black;
+			background-color: $colour1;
+			height: 100px;
+
+		}
+		li:first-child:hover {	
+			background-color: lighten($colour1, 10%);
+			cursor: pointer;
+		}
+
+		li {
+			color: black;
+			background-color: $colour5;
+			height: 200px;
+			border-bottom: 5px solid black;
+			position: relative;
+			transition: linear 0.2s;
+			a {
+				position: absolute;
+				bottom: 0;
+				right: calc(20% + 20px);
+			}
+		}
+
+		li:hover {
+			background-color: lighten($colour5, 10%);
+			cursor: pointer;
+			transition: linear 0.2s;
+			
+		}
+
+	}
+
+}
+
+.content {
+	z-index: 2;
+	background-color: black;
+	border-top-left-radius: 35px;
+	border-bottom-left-radius: 35px;
+	position: fixed;
+	top: 60px;
+	left: 20%;
+	
+	height: calc(100% - 160px);
+	width: calc(80% - 10px);
+	
+	border: 20px solid black;
+
+	overflow-y: scroll;
+
+	.subtitle {
+		background-color: $colour2;
+		color: black;
+		margin: 20px 30px 20px 10px;
+		border-radius: 30px;
+		padding: 5px;
+		text-align: center;
+		font-size: 1.5em;
+		span {
+			padding: 5px calc(33% - 50px) 5px calc(33% - 50px);
+			border: 5px solid black;
+		}
+	}
+	
+	.ds9-window, .goku-window {
+		text-align: center;
+		color: black;
+		font-size: 1.3em;
+		padding-top: 5px;
+		border-radius: 30px;
+		height: 450px;
+		width: 40%;
+		overflow: hidden;
+		h3 {
+			border-bottom: 5px solid black;
+			padding-bottom: 15px;
+		}
+
+	}
+
+	.ds9-list, .goku-list {
+		background-color: black;
+		color: $primaryColour;
+		margin: auto;
+		height: 88%;
+		width: 90%;
+		border-radius: 15px;
+		font-size: 0.9em;
+		margin-top: -20px;
+		overflow: auto;
+		ul {
+			padding: 5px;
+			list-style-type: none;
+			li {
+				span {
+					display: inline-block;
+					width: 60%;
+					margin: auto;
+				}
+				.inspect-icon {
+					display: none;
+				}
+			}
+			li:hover {
+				background-color: $colour1;
+				color: black;
+				cursor: pointer;
+				border-radius: 20px;
+				position: relative;
+				.inspect-icon {
+					display: inline;
+					position: absolute;
+					right: 10px;
+					padding-left: 5px;
+					border-left: 3px solid black;
+					img {
+						height: 17px;
+						width: 17px;
+					}
+				}
+			}
+			span.selected {
+				background-color: lighten($colour1, 30%);
+				color: black;
+				border-radius: 20px;
+				transition: linear 0.2s;
+			}
+		}
+	}
+
+	.ds9-window {
+		background-color: $colour3;
+		float: left;
+		margin: 10px 0 0 10px;
+
+	}
+
+	.goku-window {
+		background-color: $colour4;
+		float: right;
+		margin: 10px 30px 0 0;
+	}
+
+	.add-button, .remove-button {
+		background-color: $colour1;
+		color: black;
+		font-size: 1.2em;
+		position: absolute;
+		width: calc(18% - 40px);
+		border: none;
+		left: calc(41% + 10px);
+		border-radius: 15px;
+		height: 40px;
+		transition: linear 0.2s;
+		
+
+	}
+	
+	.add-button {
+		top: 250px;
+	}
+
+	.add-button:hover, .remove-button:hover {
+		background-color: lighten($colour1, 30%);
+		transition: linear 0.2s;
+	}
+
+	.remove-button {
+		top: 300px;
+	}
+
+
+}
+.crew-member-page {
+
+	margin-top: 20px;
+	.go-back-button {
+
+
+
+	}
+
+	.crew-image {
+		margin: 0 20px 20px 20px;
+		float: left;
+		border: 10px solid $colour6;
+		border-radius: 10px;
+
+	}
+
+	.name-group {
+		margin-top: 20px;
+		margin-bottom: 20px;
+		font-size: 1.3em;
+		.name-label {
+			font-size: 1.2em;
+			padding: 5px;
+			background-color: $colour4;
+			color: black;
+			border-top-left-radius: 20px;
+			border-bottom-left-radius: 20px;
+		}
+
+		.crew-name {
+
+		}
+	}
+
+	.detail-group {
+		width: 500px;
+		float: left;
+		text-align: center;
+		.detail-label {
+			display: block;
+			background-color: $colour5;
+			color: black;
+			font-size: 1.5em;
+			width: 100%;
+			border-radius: 20px;
+
+		}
+		.crew-details {
+			display: inline-block;
+		}
+	}
+
+
+
+}
+.footer {
+	z-index: 0;
+	background-color: $alternateColour;
+	text-align: right;
+	border-top-right-radius: 35px;
+	border-bottom-right-radius: 35px;
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	
+	height: 50px;
+	width: 90%;
+	.star-date {
+		padding: 0 6px 0 6px;
+		font-size: 2.1em;
+		position: relative;
+		right: 200px;
+		background-color: $backgroundColour;
+	}
+
+
+}

@@ -1,0 +1,25 @@
+<div class="subtitle"><span>CREW MANIFEST</span></div>
+
+<div class="ds9-window">
+	<h3>DEEP SPACE NINE</h3>
+	<div class="ds9-list">
+		<ul>
+			<li ng-repeat="crewMember in vm.stationCrew | orderBy: 'text'" >
+			<span toggle-selected ng-click="crewMember.selected = !crewMember.selected">{{crewMember.Text | customFilter}}</span>
+			<a href="#/crewmember/{{$index}}" class="inspect-icon"><img src="public/assets/Magnifying_glass_icon.svg"></a><li>
+		</ul>
+	</div>
+</div>
+
+<button type="button" class="add-button" ng-click="vm.addCrew()">ADD >>></button>
+<button type="button" class="remove-button" ng-click="vm.removeCrew()"><<< REMOVE</button>
+
+<div class="goku-window">
+	<h3>USS GOKU</h3>
+	<div class="goku-list">
+		<ul>
+			<li ng-repeat="crewMember in vm.shipCrew">
+			<span toggle-selected ng-click="crewMember.selected = !crewMember.selected">{{crewMember.Text | customFilter}}</span><li>
+		</ul>
+	</div>
+</div>

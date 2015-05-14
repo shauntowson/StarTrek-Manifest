@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LCARS - USS GOKU</title>
+
+	<link rel="stylesheet" type="text/css" href="public/dist/normalize.css">
+	<link rel="stylesheet" type="text/css" href="public/dist/main.min.css">
+</head>
+<body ng-app="app">
+	<div class="wrapper">
+		<div class="top-bar"><span class="title">USS GOKU - NCC-Over 9000</span></div>
+		<div class="side-bar">
+			<ul class="side-options">
+				<li><a ui-sref="manifest">CREW MANIFEST</a></li>
+				<li><a ui-sref="engineering">ENGINEERING</a></li>
+			</ul>
+		</div>
+
+		<div class="content">
+		
+			<ui-view></ui-view>
+
+		</div>
+
+		<div class="footer">
+			<span class="star-date">STARDATE: 92886.97</span>
+		</div>
+	
+	</div>	
+	<script src="public/libs/angular/angular.min.js" type="text/javascript"></script>
+	<script src="public/libs/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript"></script>
+	<script src="public/libs/ui-router-extras/release/ct-ui-router-extras.min.js" type="text/javascript"></script>
+	<script src="public/dist/app.js" type="text/javascript"></script>
+</body>
+</html>
