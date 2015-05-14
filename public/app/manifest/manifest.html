@@ -5,8 +5,13 @@
 	<div class="ds9-list">
 		<ul>
 			<li ng-repeat="crewMember in vm.stationCrew | orderBy:'id'" >
-			<span ng-class="crewMember.selected ? 'selected' : ''" ng-click="crewMember.selected = !crewMember.selected">{{crewMember.Text | customFilter}}</span>
-			<a href="#/crewmember/{{crewMember.id}}" class="inspect-icon"><img src="public/assets/Magnifying_glass_icon.svg"></a><li>
+				<span ng-class="crewMember.selected ? 'selected' : ''" ng-click="crewMember.selected = !crewMember.selected">
+					{{crewMember.Text | customFilter}}
+				</span>
+				<a href="#/crewmember/{{crewMember.id}}" class="inspect-icon">
+					<img src="public/assets/Magnifying_glass_icon.svg">
+				</a>
+			<li>
 		</ul>
 	</div>
 </div>
@@ -19,7 +24,13 @@
 	<div class="goku-list">
 		<ul>
 			<li ng-repeat="crewMember in vm.shipCrew | orderBy:'id'">
-			<span ng-class="crewMember.selected ? 'selected' : ''" ng-click="crewMember.selected = !crewMember.selected">{{crewMember.Text | customFilter}}</span><a href="#/crewmember/{{crewMember.id}}" class="inspect-icon"><img src="public/assets/Magnifying_glass_icon.svg"></a><li>
+				<span ng-class="crewMember.selected ? 'selected' : ''" ng-click="crewMember.selected = !crewMember.selected">
+					{{crewMember.Text | customFilter}}
+				</span>
+				<a href="#/crewmember/{{crewMember.id}}" class="inspect-icon">
+					<img src="public/assets/Magnifying_glass_icon.svg">
+				</a>
+			<li>
 		</ul>
 	</div>
 </div>
